@@ -1,4 +1,6 @@
 /*
+ Insertion Sort
+
  i ← 1
  while i < length(A)
      j ← i
@@ -9,26 +11,6 @@
      i ← i + 1
  end while
  */
-
-/* swap two items in a list */
-let swap = (items, i, j) => {
-  /* find the values that need to be swapped */
-  let i_item = List.nth(items, i);
-  let j_item = List.nth(items, j);
-
-  /* partial application of mapi to create swapper function */
-  let swapper =
-    List.mapi((index, item) =>
-      switch (index) {
-      | x when x == i => j_item
-      | x when x == j => i_item
-      | _ => item
-      }
-    );
-
-  /* swap the items in the items list */
-  swapper(items);
-};
 
 let inner_condition = (items, j) =>
   switch (j > 0) {
@@ -46,7 +28,7 @@ let sort = (items: list(int)) : list(int) => {
   while (i^ < len) {
     let j = ref(i^);
     while (inner_condition(swappable_items^, j^)) {
-      swappable_items := swap(swappable_items^, j^, j^ - 1);
+      swappable_items := Util.swap(swappable_items^, j^, j^ - 1);
       j := j^ - 1;
     };
     i := i^ + 1;
