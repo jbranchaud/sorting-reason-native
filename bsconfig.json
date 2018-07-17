@@ -1,0 +1,23 @@
+{
+  "name": "sorting",
+  "version": "0.1.0",
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    }
+  ],
+  "entries": [
+    {
+      "backend": "bytecode",
+      "main-module": "Index",
+      "output-name": "sorting"
+    },
+    {
+      "backend": "native",
+      "main-module": "Index",
+      "output-name": "sorting"
+    }
+  ],
+  "refmt": 3
+}
