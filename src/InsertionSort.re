@@ -1,5 +1,6 @@
 /*
  Insertion Sort
+ https://en.wikipedia.org/wiki/Insertion_sort
 
  i ← 1
  while i < length(A)
