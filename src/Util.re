@@ -17,3 +17,10 @@ let swap = (items, i, j) => {
   /* swap the items in the items list */
   swapper(items);
 };
+
+/* swap two items in an array */
+let array_swap = (items: array('a), i, j) => {
+  let temp = items[i];
+  items[i] = items[j];
+  items[j] = temp;
+};

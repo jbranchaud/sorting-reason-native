@@ -22,7 +22,16 @@ let inner_condition = (items, j) =>
     item1 > item2;
   };
 
-let sort = (items: list(int)) : list(int) => {
+let array_inner_condition = (items: array(int), j) =>
+  switch (j > 0) {
+  | false => false
+  | true =>
+    let item1 = items[j - 1];
+    let item2 = items[j];
+    item1 > item2;
+  };
+
+let sort_list = (items: list(int)) : list(int) => {
   let swappable_items = ref(items);
   let len = List.length(items);
   let i = ref(1);
@@ -36,3 +45,29 @@ let sort = (items: list(int)) : list(int) => {
   };
   swappable_items^;
 };
+
+let sort_array = (items: array(int)) : array(int) => {
+  let len = Array.length(items);
+  let i = ref(1);
+
+  while (i^ < len) {
+    let j = ref(i^);
+    while (array_inner_condition(items, j^)) {
+      Util.array_swap(items, j^, j^ - 1);
+      j := j^ - 1;
+    };
+    i := i^ + 1;
+  };
+
+  items;
+};
+
+type sortable =
+  | Array(array(int))
+  | List(list(int));
+
+let sort = (items: sortable) : sortable =>
+  switch (items) {
+  | Array(array_of_items) => Array(sort_array(array_of_items))
+  | List(list_of_items) => List(sort_list(list_of_items))
+  };
