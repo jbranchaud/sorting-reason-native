@@ -14,3 +14,6 @@ Invariant.expect(Array.of_list(expected_list) == sorted_array);
 let sorted_list_2 = SelectionSort.sort(unsorted_list);
 
 Invariant.expect(sorted_list_2 == expected_list);
+
+let sorted_list_3 = RecursiveInsertionSort.sort(unsorted_list);
+Invariant.expect(sorted_list_3 == expected_list);
